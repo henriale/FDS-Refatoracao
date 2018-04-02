@@ -1,5 +1,5 @@
+import java.util.Collection;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class Bar {
@@ -9,8 +9,8 @@ public class Bar {
         this.clientes = new HashMap<>(10);
     }
 
-    public List<Cliente> consultaClientes(){
-        return (List<Cliente>) clientes.values();
+    public Collection<Cliente> consultaClientes(){
+        return clientes.values();
     }
 
     public Cliente consultaCliente(String cpf) {

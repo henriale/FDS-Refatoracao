@@ -6,19 +6,25 @@ public class Cliente {
 
     public Cliente(String nome, String cpf, int idade, Character genero) {
         this.nome = nome;
-        this.cpf = cpf;
-        this.genero = genero;
+        setCpf(cpf);
+        setGenero(genero);
         setIdade(idade);
     }
 
-    public void setIdade(int idade) {
-        if (idade < 18) {
-            this.idade = idade;
-        }
+    private void setIdade(int idade) {
+        this.idade = idade >= 18 ? idade : 0;
+    }
+
+    private void setGenero(Character genero) {
+        this.genero = genero.equals('M') || genero.equals('H') ? genero : null;
     }
 
     public String getNome() {
         return nome;
+    }
+
+    private void setCpf(String cpf) {
+        this.cpf = cpf.length() == 11 ? cpf : null;
     }
 
     public String getCpf() {
