@@ -9,4 +9,11 @@ public class Socio extends Cliente {
     public String getNumero() {
         return numero;
     }
+
+    @Override
+    public String toString() {
+        return "Socio{" +
+                "numero='" + numero + '\'' +
+                '}';
+    }
 }
