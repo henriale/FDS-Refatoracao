@@ -1,6 +1,9 @@
-import org.junit.jupiter.api.Test;
+package tests;
 
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
+import persistence.Cliente;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ClienteTest {
     @Test
