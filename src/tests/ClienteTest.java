@@ -1,7 +1,7 @@
 package tests;
 
 import org.junit.jupiter.api.Test;
-import persistence.Cliente;
+import business.Cliente;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

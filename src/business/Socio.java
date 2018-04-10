@@ -1,6 +1,4 @@
-package persistence;
-
-import persistence.Cliente;
+package business;
 
 public class Socio extends Cliente {
     private String numero;
@@ -16,7 +14,7 @@ public class Socio extends Cliente {
 
     @Override
     public String toString() {
-        return "persistence.Socio{" +
+        return "business.Socio{" +
                 "numero='" + numero + '\'' +
                 '}';
     }

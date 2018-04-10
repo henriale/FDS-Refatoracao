@@ -3,9 +3,7 @@ package tests;
 import business.Bar;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import persistence.Cliente;
-
-import java.util.Collection;
+import business.Cliente;
 
 import static org.junit.jupiter.api.Assertions.*;
 

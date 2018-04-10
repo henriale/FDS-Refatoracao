@@ -1,4 +1,4 @@
-package persistence;
+package business;
 
 public class Cliente {
     private String nome;
@@ -43,7 +43,7 @@ public class Cliente {
 
     @Override
     public String toString() {
-        return "persistence.Cliente{" +
+        return "business.Cliente{" +
                 "nome='" + nome + '\'' +
                 ", cpf='" + cpf + '\'' +
                 ", idade=" + idade +
