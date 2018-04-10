@@ -1,3 +1,5 @@
+package persistence;
+
 public class Cliente {
     private String nome;
     private String cpf;
@@ -41,7 +43,7 @@ public class Cliente {
 
     @Override
     public String toString() {
-        return "Cliente{" +
+        return "persistence.Cliente{" +
                 "nome='" + nome + '\'' +
                 ", cpf='" + cpf + '\'' +
                 ", idade=" + idade +
