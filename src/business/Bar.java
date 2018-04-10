@@ -35,6 +35,10 @@ public class Bar {
         int f = 0;
         double[] retorno = new double[2];
 
+        if (clientes.isEmpty()) {
+            return retorno;
+        }
+
         for (Map.Entry<String, Cliente> cliente : clientes.entrySet()) {
             if (cliente.getValue().getGenero() == 'M') {
                 m++;
@@ -75,12 +79,12 @@ public class Bar {
 
     }
 
-    public void removeCliente(String cpf){
-        for (Map.Entry<String, Cliente> cliente : clientes.entrySet()){
-            if (cliente.getValue().getCpf().equals(cpf)){
-                clientes.remove(cpf);
-            }
+    public Cliente removeCliente(String cpf){
+        if (clientes.containsKey(cpf)) {
+            return clientes.remove(cpf);
         }
+
+        return null;
     }
 
     public boolean contemCpf(String cpf) {

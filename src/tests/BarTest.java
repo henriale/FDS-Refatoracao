@@ -18,19 +18,15 @@ public class BarTest {
     }
 
     @Test
-    public void quantidadeClientes(){
+    public void quantidadeClientes() {
         bar.addCliente(new Cliente("Celso", "12345678901", 63, 'H'));
         assertEquals(1, bar.quantidadeClientes());
-    }
-
-    @Test
-    public void testeClientes(){
-        Collection<Cliente> clientes = bar.consultaClientes();
-
-        assertFalse(clientes.isEmpty());
-        assertEquals(1, clientes.size());
-        clientes.add(new Cliente("Doria", "02820102910", 40, 'F'));
-        assertEquals(2, clientes.size());
+        bar.addCliente(new Cliente("Jorge", "22345678902", 63, 'H'));
+        assertEquals(2, bar.quantidadeClientes());
+        bar.addCliente(new Cliente("Marcia", "32345678903", 63, 'M'));
+        assertEquals(3, bar.quantidadeClientes());
+        bar.removeCliente("32345678903");
+        assertEquals(2, bar.quantidadeClientes());
     }
 
     @Test
@@ -53,8 +49,31 @@ public class BarTest {
     }
 
     @Test
-    public void testePercentualGenero(){
-        //bar.percentualGenero()
+    public void testePercentualGeneroHomogenioMasculino() {
+        bar.addCliente(new Cliente("Celso", "12345678901", 63, 'H'));
+        bar.addCliente(new Cliente("Jorge", "22345678902", 63, 'H'));
+        double[] percentual = bar.percentualGenero();
+        assertEquals(0, percentual[0]);
+        assertEquals(1, percentual[1]);
+    }
+
+    @Test
+    public void testePercentualGeneroHomogenioFeminino() {
+        bar.addCliente(new Cliente("Maria", "12345678901", 63, 'M'));
+        bar.addCliente(new Cliente("Carla", "22345678902", 63, 'M'));
+        double[] percentual = bar.percentualGenero();
+        assertEquals(1, percentual[0]);
+        assertEquals(0, percentual[1]);
+    }
+
+    @Test
+    public void testePercentualGeneroIgualmenteDividido() {
+        bar.addCliente(new Cliente("Jorge", "12345678901", 63, 'H'));
+        bar.addCliente(new Cliente("Carla", "22345678902", 63, 'M'));
+
+        double[] percentual = bar.percentualGenero();
+        assertEquals(0.5, percentual[0]);
+        assertEquals(0.5, percentual[1]);
     }
 
     @Test
