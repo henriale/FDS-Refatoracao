@@ -28,8 +28,8 @@ public class Bar {
     }
 
     public double[] percentualGenero() {
-        int m = 0;
-        int f = 0;
+        double m = 0;
+        double f = 0;
         double[] retorno = new double[2];
 
         if (clientes.isEmpty()) {
@@ -51,12 +51,12 @@ public class Bar {
     }
 
     public double[] percentualSocios() {
-        int socio = 0;
-        int naoSocio = 0;
+        double socio = 0;
+        double naoSocio = 0;
         double[] retorno = new double[2];
 
-        for (Map.Entry<String, Cliente> cliente : clientes.entrySet()) {
-            if (cliente instanceof Socio) {
+        for (Map.Entry<String, Cliente> entry : clientes.entrySet()) {
+            if (entry.getValue() instanceof Socio) {
                 socio++;
             } else {
                 naoSocio++;
@@ -85,6 +85,10 @@ public class Bar {
     }
 
     public boolean contemCpf(String cpf) {
-        return !clientes.containsKey(cpf);
+        return clientes.containsKey(cpf);
+    }
+
+    public void fechar() {
+        // persist data in file
     }
 }
