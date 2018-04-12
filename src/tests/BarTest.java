@@ -1,6 +1,7 @@
 package tests;
 
 import business.Bar;
+import business.Socio;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import business.Cliente;
@@ -76,16 +77,30 @@ public class BarTest {
 
     @Test
     public void testePercentualSocio(){
-        //bar.percentualSocio()
+        bar.addCliente(new Cliente("Jorge", "12345678901", 63, 'H'));
+        bar.addCliente(new Socio("Carla", "22345678902", 63, 'M', "12312311"));
+
+        double[] percentual = bar.percentualSocios();
+        assertEquals(0.5, percentual[0]);
+        assertEquals(0.5, percentual[1]);
     }
 
     @Test
     public void testeRemoveCliente(){
-        //bar.removeCliente()
+        String cpf = "12345678901";
+        bar.addCliente(new Socio("Carla", cpf, 63, 'M', "12312311"));
+
+        Cliente cliente = bar.removeCliente(cpf);
+
+        assertEquals(0, bar.quantidadeClientes());
+        assertEquals(cpf, cliente.getCpf());
     }
 
     @Test
     public void testeContemCpf(){
-        //bar.contemCpf(cpf)
+        String cpf = "12345678901";
+        bar.addCliente(new Socio("Carla", cpf, 63, 'M', "12312311"));
+
+        assertTrue(bar.contemCpf(cpf));
     }
 }
