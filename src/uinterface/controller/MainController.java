@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
@@ -89,6 +90,15 @@ public class MainController {
     }
 
     public void exit() throws Exception {
-        Main.getBar().fechar();
+        if(!Main.getBar().consultaClientes().isEmpty()){
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Ops, ainda não...");
+            alert.setHeaderText(null);
+            alert.setContentText("Você não pode fechar o bar, ainda há clientes nele!");
+
+            alert.showAndWait();
+        } else {
+            Main.getBar().fechar();
+        }
     }
 }
