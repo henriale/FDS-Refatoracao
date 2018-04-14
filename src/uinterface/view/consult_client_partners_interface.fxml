@@ -7,10 +7,10 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="120.0" prefWidth="300.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="uinterface.controller.ConsultClientsGenderController">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="120.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uinterface.controller.ConsultClientsPartnersController">
   <columnConstraints>
-      <ColumnConstraints hgrow="SOMETIMES" maxWidth="95.0" minWidth="10.0" prefWidth="83.0" />
-    <ColumnConstraints hgrow="SOMETIMES" maxWidth="162.0" minWidth="10.0" prefWidth="141.0" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="95.0" minWidth="10.0" prefWidth="94.0" />
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="162.0" minWidth="10.0" prefWidth="130.0" />
     <ColumnConstraints hgrow="SOMETIMES" maxWidth="95.0" minWidth="10.0" prefWidth="76.0" />
   </columnConstraints>
   <rowConstraints>
@@ -24,17 +24,17 @@
             <Insets right="10.0" />
          </GridPane.margin>
       </Button>
-      <Label text="Mulheres:" GridPane.rowIndex="1">
+      <Label fx:id="nonPartnerLabel" text="Não sócios:" GridPane.rowIndex="1">
          <GridPane.margin>
             <Insets left="10.0" />
          </GridPane.margin>
       </Label>
-      <Label text="Homens:">
+      <Label fx:id="partnerLabel" text="Sócios:">
          <padding>
             <Insets left="10.0" />
          </padding>
       </Label>
-      <Label fx:id="malePercentage" GridPane.columnIndex="1" GridPane.columnSpan="2147483647" />
-      <Label fx:id="femalePercentage" GridPane.columnIndex="1" GridPane.columnSpan="2147483647" GridPane.rowIndex="1" />
+      <Label fx:id="partnerPercentage" GridPane.columnIndex="1" GridPane.columnSpan="2147483647" />
+      <Label fx:id="nonPartnerPercentage" GridPane.columnIndex="1" GridPane.columnSpan="2147483647" GridPane.rowIndex="1" />
    </children>
 </GridPane>

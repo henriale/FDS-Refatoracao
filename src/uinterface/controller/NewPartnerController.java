@@ -54,7 +54,7 @@ public class NewPartnerController {
     A diferenca eh que na hora de criar o objeto, se ele nao digitou certo, os campos ficam null
     Idade: int
     CPF: String com 11 caracteres
-    Nº sócio: int
+    Nº sócio: String
      */
     public void newClient() throws IOException {
         Main.createClient(partnerName, partnerCpf, partnerAge, partnerNumber, rbClientFemale, partnerAdded, cpfAlreadyExists);

@@ -3,17 +3,14 @@ package business;
 import javafx.application.Platform;
 
 import java.util.Collection;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
 public class Bar {
     private Map<String, Client> clientes;
-    private Map<Date, Client> accessRecords;
 
     public Bar() {
         this.clientes = new HashMap<>(10);
-        this.accessRecords = new HashMap<>(10);
     }
 
     public Collection<Client> consultaClientes(){
@@ -49,8 +46,8 @@ public class Bar {
             }
         }
 
-        retorno[0] = m/clientes.size();
-        retorno[1] = f/clientes.size();
+        retorno[0] = m/clientes.size()*100;
+        retorno[1] = f/clientes.size()*100;
 
         return retorno;
     }
@@ -68,8 +65,8 @@ public class Bar {
             }
         }
 
-        retorno[0] = socio/clientes.size();
-        retorno[1] = naoSocio/clientes.size();
+        retorno[0] = socio/clientes.size()*100;
+        retorno[1] = naoSocio/clientes.size()*100;
 
         return retorno;
     }
@@ -87,7 +84,6 @@ public class Bar {
         }
 
         Client cliente = clientes.remove(cpf);
-        accessRecords.put(new Date(), cliente);
 
         return cliente;
     }
@@ -97,13 +93,11 @@ public class Bar {
     }
 
     public void fechar() throws Exception {
-        if (quantidadeClientes() > 0) {
-            throw new Exception("Não foi possível fechar o bar pois ainda há clientes dentro!");
-        }
-
-        for (Map.Entry<Date, Client> entry : accessRecords.entrySet()) {
-            System.out.println(entry.getKey() + " - " + entry.getValue().getCpf());
-        }
+        // vou procurar outra maneira de juntar esse if com a interface
+        // dai ele lanca um alerta e nao uma exception
+//        if (quantidadeClientes() > 0) {
+//            throw new Exception("Não foi possível fechar o bar pois ainda há clientes nele!");
+//        }
 
         Platform.exit();
     }

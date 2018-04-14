@@ -44,7 +44,7 @@ public class MainController {
     @FXML
     private Button exitBtn;
 
-    public void newClient(ActionEvent actionEvent) throws IOException {
+    public void newClient() throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("../view/new_client_interface.fxml"));
         Stage stage = (Stage) newClientMenuButton.getScene().getWindow();
         stage.setTitle("Novo cliente :)");
@@ -52,7 +52,7 @@ public class MainController {
         stage.show();
     }
 
-    public void newPartner(ActionEvent actionEvent) throws IOException {
+    public void newPartner() throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("../view/new_partner_interface.fxml"));
         Stage stage = (Stage) newClientMenuButton.getScene().getWindow();
         stage.setTitle("Novo sócio :)");
@@ -69,7 +69,7 @@ public class MainController {
         } else if (actionEvent.getSource() == consultPerGender){
             root = FXMLLoader.load(getClass().getResource("../view/consult_client_gender_interface.fxml"));
         } else if (actionEvent.getSource() == consultPerPartner){
-            root = FXMLLoader.load(getClass().getResource("../view/consult_client_partner_interface.fxml"));
+            root = FXMLLoader.load(getClass().getResource("../view/consult_client_partners_interface.fxml"));
         } else {
             root = FXMLLoader.load(getClass().getResource("../view/main_interface.fxml"));
         }
@@ -80,7 +80,7 @@ public class MainController {
         stage.show();
     }
 
-    public void clientExit(ActionEvent actionEvent) throws IOException{
+    public void clientExit() throws IOException{
         Parent root = FXMLLoader.load(getClass().getResource("../view/client_exit_interface.fxml"));
         Stage stage = (Stage) clientExit.getScene().getWindow();
         stage.setTitle("Cliente saindo :(");
@@ -88,7 +88,7 @@ public class MainController {
         stage.show();
     }
 
-    public void exit(ActionEvent actionEvent) {
-        //Main.getBar().fechar();
+    public void exit() throws Exception {
+        Main.getBar().fechar();
     }
 }

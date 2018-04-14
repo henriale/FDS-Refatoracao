@@ -11,21 +11,21 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class ConsultClientsGenderController implements Initializable {
+public class ConsultClientsPartnersController implements Initializable {
     @FXML
     private Button backBtn;
 
     @FXML
-    private Label maleLabel;
+    private Label partnerLabel;
 
     @FXML
-    private Label femaleLabel;
+    private Label nonPartnerLabel;
 
     @FXML
-    private Label malePercentage;
+    private Label partnerPercentage;
 
     @FXML
-    private Label femalePercentage;
+    private Label nonPartnerPercentage;
 
     public void backToMenu() throws IOException {
         Main.backToMain((Stage) backBtn.getScene().getWindow());
@@ -33,8 +33,8 @@ public class ConsultClientsGenderController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        malePercentage.setText(Main.getBar().percentualGenero()[1] + "%");
-        femalePercentage.setText(Main.getBar().percentualGenero()[0] + "%");
+        partnerPercentage.setText(Main.getBar().percentualSocios()[0] + "%");
+        nonPartnerPercentage.setText(Main.getBar().percentualGenero()[1] + "%");
     }
 
 
