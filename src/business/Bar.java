@@ -75,7 +75,6 @@ public class Bar {
         if (!clientes.containsKey(client.getCpf())) {
             clientes.put(client.getCpf(), client);
         }
-
     }
 
     public Client removeCliente(String cpf){
@@ -83,9 +82,7 @@ public class Bar {
             return clientes.remove(cpf);
         }
 
-        Client cliente = clientes.remove(cpf);
-
-        return cliente;
+        return null;
     }
 
     public boolean contemCpf(String cpf) {
@@ -93,12 +90,6 @@ public class Bar {
     }
 
     public void fechar() throws Exception {
-        // vou procurar outra maneira de juntar esse if com a interface
-        // dai ele lanca um alerta e nao uma exception
-//        if (quantidadeClientes() > 0) {
-//            throw new Exception("Não foi possível fechar o bar pois ainda há clientes nele!");
-//        }
-
         Platform.exit();
     }
 }
