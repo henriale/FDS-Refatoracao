@@ -3,14 +3,17 @@ package business;
 import javafx.application.Platform;
 
 import java.util.Collection;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
 public class Bar {
     private Map<String, Client> clientes;
+    private Map<Date, Client> accessRecords;
 
     public Bar() {
         this.clientes = new HashMap<>(10);
+        this.accessRecords = new HashMap<>(10);
     }
 
     public Collection<Client> consultaClientes(){
@@ -83,15 +86,25 @@ public class Bar {
             return clientes.remove(cpf);
         }
 
-        return null;
+        Client cliente = clientes.remove(cpf);
+        accessRecords.put(new Date(), cliente);
+
+        return cliente;
     }
 
     public boolean contemCpf(String cpf) {
         return clientes.containsKey(cpf);
     }
 
-    public void fechar() {
-        // persist data in file
+    public void fechar() throws Exception {
+        if (quantidadeClientes() > 0) {
+            throw new Exception("Não foi possível fechar o bar pois ainda há clientes dentro!");
+        }
+
+        for (Map.Entry<Date, Client> entry : accessRecords.entrySet()) {
+            System.out.println(entry.getKey() + " - " + entry.getValue().getCpf());
+        }
+
         Platform.exit();
     }
 }

@@ -103,4 +103,16 @@ public class BarTest {
 
         assertTrue(bar.contemCpf(cpf));
     }
+
+    @Test
+    public void testeFecharBar(){
+        bar.addCliente(new Socio("Carla", "12345678901", 63, 'M', "12312311"));
+        bar.removeCliente("12345678901");
+
+        try {
+            bar.fechar();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

@@ -89,6 +89,6 @@ public class MainController {
     }
 
     public void exit(ActionEvent actionEvent) {
-        Main.getBar().fechar();
+        //Main.getBar().fechar();
     }
 }
