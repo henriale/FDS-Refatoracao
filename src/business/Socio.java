@@ -1,6 +1,6 @@
 package business;
 
-public class Socio extends Cliente {
+public class Socio extends Client {
     private String numero;
 
     public Socio(String nome, String cpf, int idade, char genero, String numero) {
@@ -14,8 +14,10 @@ public class Socio extends Cliente {
 
     @Override
     public String toString() {
-        return "business.Socio{" +
-                "numero='" + numero + '\'' +
-                '}';
+        return  "Nome: '" + getNome() + '\'' +
+                ", CPF: '" + getCpf() + '\'' +
+                ", Idade: " + getIdade() +
+                ", Gênero: " + getGenero() +
+                ", Nº sócio: " + numero;
     }
 }

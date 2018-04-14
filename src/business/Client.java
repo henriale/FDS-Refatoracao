@@ -1,12 +1,12 @@
 package business;
 
-public class Cliente {
+public class Client {
     private String nome;
     private String cpf;
     private int idade;
     private Character genero;
 
-    public Cliente(String nome, String cpf, int idade, Character genero) {
+    public Client(String nome, String cpf, int idade, Character genero) {
         this.nome = nome;
         setCpf(cpf);
         setGenero(genero);
@@ -43,11 +43,9 @@ public class Cliente {
 
     @Override
     public String toString() {
-        return "business.Cliente{" +
-                "nome='" + nome + '\'' +
-                ", cpf='" + cpf + '\'' +
-                ", idade=" + idade +
-                ", genero=" + genero +
-                '}';
+        return  "Nome: '" + nome + '\'' +
+                ", CPF: '" + cpf + '\'' +
+                ", Idade: " + idade +
+                ", Gênero: " + genero;
     }
 }

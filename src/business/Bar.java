@@ -1,21 +1,23 @@
 package business;
 
+import javafx.application.Platform;
+
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
 public class Bar {
-    private Map<String, Cliente> clientes;
+    private Map<String, Client> clientes;
 
     public Bar() {
         this.clientes = new HashMap<>(10);
     }
 
-    public Collection<Cliente> consultaClientes(){
+    public Collection<Client> consultaClientes(){
         return clientes.values();
     }
 
-    public Cliente consultaCliente(String cpf) {
+    public Client consultaCliente(String cpf) {
         if (clientes.containsKey(cpf)){
             return clientes.get(cpf);
         }
@@ -36,7 +38,7 @@ public class Bar {
             return retorno;
         }
 
-        for (Map.Entry<String, Cliente> cliente : clientes.entrySet()) {
+        for (Map.Entry<String, Client> cliente : clientes.entrySet()) {
             if (cliente.getValue().getGenero() == 'M') {
                 m++;
             } else {
@@ -55,7 +57,7 @@ public class Bar {
         double naoSocio = 0;
         double[] retorno = new double[2];
 
-        for (Map.Entry<String, Cliente> entry : clientes.entrySet()) {
+        for (Map.Entry<String, Client> entry : clientes.entrySet()) {
             if (entry.getValue() instanceof Socio) {
                 socio++;
             } else {
@@ -69,14 +71,14 @@ public class Bar {
         return retorno;
     }
 
-    public void addCliente(Cliente cliente) {
-        if (!clientes.containsKey(cliente.getCpf())) {
-            clientes.put(cliente.getCpf(), cliente);
+    public void addCliente(Client client) {
+        if (!clientes.containsKey(client.getCpf())) {
+            clientes.put(client.getCpf(), client);
         }
 
     }
 
-    public Cliente removeCliente(String cpf){
+    public Client removeCliente(String cpf){
         if (clientes.containsKey(cpf)) {
             return clientes.remove(cpf);
         }
@@ -90,5 +92,6 @@ public class Bar {
 
     public void fechar() {
         // persist data in file
+        Platform.exit();
     }
 }
