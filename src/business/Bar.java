@@ -106,13 +106,21 @@ public class Bar {
         }
 
         try {
+            // create formatters and file writer. constructor(FileTitleFormatter, AccessRecordFormatter, AccessRecordsCollection, path)
             SimpleDateFormat fileDateFormatter = new SimpleDateFormat("yyyy-MM-dd-hhmm");
             SimpleDateFormat recordDateFormatter = new SimpleDateFormat("dd/MM/yyyy hh:mm");
-
             FileWriter fw = new FileWriter(String.format("records/%s.txt", fileDateFormatter.format(new Date())));
+
+            // check if file already exists
+            if (true) {
+                // TODO
+            }
+
+            // write in file
             for (Map.Entry<Date, Client> entry : accessRecords.entrySet()) {
                 Client cliente = entry.getValue();
-                fw.write(String.format("%s Client %s(%s) left the bar.\n",
+                fw.write(String.format(
+                        "%s Client %s(%s) left the bar.\n",
                         recordDateFormatter.format(entry.getKey()),
                         cliente.getNome(),
                         cliente.getCpf()
