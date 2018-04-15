@@ -2,15 +2,23 @@ package business;
 
 import javafx.application.Platform;
 
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.Collection;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
 public class Bar {
+    private final HashMap<Date, Client> accessRecords;
     private Map<String, Client> clientes;
+
 
     public Bar() {
         this.clientes = new HashMap<>(10);
+        this.accessRecords = new HashMap<>(10);
     }
 
     public Collection<Client> consultaClientes(){
@@ -78,11 +86,14 @@ public class Bar {
     }
 
     public Client removeCliente(String cpf){
-        if (clientes.containsKey(cpf)) {
-            return clientes.remove(cpf);
+        if (! clientes.containsKey(cpf)) {
+            return null;
         }
 
-        return null;
+        Client cliente = clientes.remove(cpf);
+        accessRecords.put(new Date(), cliente);
+
+        return cliente;
     }
 
     public boolean contemCpf(String cpf) {
@@ -90,6 +101,29 @@ public class Bar {
     }
 
     public void fechar() throws Exception {
+        if (quantidadeClientes() > 0) {
+            throw new Exception("Não foi possível fechar o bar pois ainda há clientes dentro!");
+        }
+
+        try {
+            SimpleDateFormat fileDateFormatter = new SimpleDateFormat("yyyy-MM-dd-hhmm");
+            SimpleDateFormat recordDateFormatter = new SimpleDateFormat("dd/MM/yyyy hh:mm");
+
+            FileWriter fw = new FileWriter(String.format("records/%s.txt", fileDateFormatter.format(new Date())));
+            for (Map.Entry<Date, Client> entry : accessRecords.entrySet()) {
+                Client cliente = entry.getValue();
+                fw.write(String.format("%s Client %s(%s) left the bar.\n",
+                        recordDateFormatter.format(entry.getKey()),
+                        cliente.getNome(),
+                        cliente.getCpf()
+                ));
+            }
+
+            fw.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
         Platform.exit();
     }
 }
