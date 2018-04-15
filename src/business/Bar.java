@@ -2,7 +2,6 @@ package business;
 
 import javafx.application.Platform;
 
-import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -37,13 +36,12 @@ public class Bar {
         return clientes.size();
     }
 
-    public double[] percentualGenero() {
+    public GenderTuple percentualGenero() {
         double m = 0;
         double f = 0;
-        double[] retorno = new double[2];
 
         if (clientes.isEmpty()) {
-            return retorno;
+            return new GenderTuple(0, 0);
         }
 
         for (Map.Entry<String, Client> cliente : clientes.entrySet()) {
@@ -53,17 +51,17 @@ public class Bar {
                 f++;
             }
         }
-
-        retorno[0] = m/clientes.size();
-        retorno[1] = f/clientes.size();
-
-        return retorno;
+        return new GenderTuple(m/clientes.size(), f/clientes.size());
     }
 
-    public double[] percentualSocios() {
+    public MembershipTuple percentualSocios() {
         double socio = 0;
         double naoSocio = 0;
         double[] retorno = new double[2];
+
+        if (clientes.isEmpty()) {
+            return new MembershipTuple(0.0, 0.0);
+        }
 
         for (Map.Entry<String, Client> entry : clientes.entrySet()) {
             if (entry.getValue() instanceof Socio) {
@@ -73,10 +71,7 @@ public class Bar {
             }
         }
 
-        retorno[0] = socio/clientes.size();
-        retorno[1] = naoSocio/clientes.size();
-
-        return retorno;
+        return new MembershipTuple(socio/clientes.size(), naoSocio/clientes.size());
     }
 
     public void addCliente(Client client) {

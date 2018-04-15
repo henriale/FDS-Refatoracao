@@ -1,9 +1,6 @@
 package tests;
 
-import business.Bar;
-import business.Client;
-import business.Gender;
-import business.Socio;
+import business.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -52,18 +49,22 @@ public class BarTest {
     public void testePercentualGeneroHomogenioMasculino() {
         bar.addCliente(new Client("Celso", "12345678901", 63, Gender.MALE));
         bar.addCliente(new Client("Jorge", "22345678902", 63, Gender.MALE));
-        double[] percentual = bar.percentualGenero();
-        assertEquals(1.0, percentual[0]);
-        assertEquals(0.0, percentual[1]);
+
+        GenderTuple percentage = bar.percentualGenero();
+
+        assertEquals(1.0, percentage.getMale());
+        assertEquals(0.0, percentage.getFemale());
     }
 
     @Test
     public void testePercentualGeneroHomogenioFeminino() {
         bar.addCliente(new Client("Maria", "12345678901", 63, Gender.FEMALE));
         bar.addCliente(new Client("Carla", "22345678902", 63, Gender.FEMALE));
-        double[] percentual = bar.percentualGenero();
-        assertEquals(0.0, percentual[0]);
-        assertEquals(1.0, percentual[1]);
+
+        GenderTuple percentage = bar.percentualGenero();
+
+        assertEquals(0.0, percentage.getMale());
+        assertEquals(1.0, percentage.getFemale());
     }
 
     @Test
@@ -71,9 +72,9 @@ public class BarTest {
         bar.addCliente(new Client("Jorge", "12345678901", 63, Gender.MALE));
         bar.addCliente(new Client("Carla", "22345678902", 63, Gender.FEMALE));
 
-        double[] percentual = bar.percentualGenero();
-        assertEquals(0.5, percentual[0]);
-        assertEquals(0.5, percentual[1]);
+        GenderTuple percentage = bar.percentualGenero();
+        assertEquals(0.5, percentage.getMale());
+        assertEquals(0.5, percentage.getFemale());
     }
 
     @Test
@@ -81,9 +82,9 @@ public class BarTest {
         bar.addCliente(new Client("Jorge", "12345678901", 63, Gender.MALE));
         bar.addCliente(new Socio("Carla", "22345678902", 63, Gender.FEMALE, "12312311"));
 
-        double[] percentual = bar.percentualSocios();
-        assertEquals(0.5, percentual[0]);
-        assertEquals(0.5, percentual[1]);
+        MembershipTuple percentage = bar.percentualSocios();
+        assertEquals(0.5, percentage.getRegistered());
+        assertEquals(0.5, percentage.getUnregistered());
     }
 
     @Test

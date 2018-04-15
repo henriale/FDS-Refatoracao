@@ -33,8 +33,8 @@ public class ConsultClientsPartnersController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        partnerPercentage.setText(Main.getBar().percentualSocios()[0] + "%");
-        nonPartnerPercentage.setText(Main.getBar().percentualGenero()[1] + "%");
+        partnerPercentage.setText(Main.getBar().percentualSocios().getRegistered()*100 + "%");
+        nonPartnerPercentage.setText(Main.getBar().percentualSocios().getUnregistered()*100 + "%");
     }
 
 

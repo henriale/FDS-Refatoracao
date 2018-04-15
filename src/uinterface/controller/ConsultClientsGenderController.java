@@ -33,8 +33,8 @@ public class ConsultClientsGenderController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        malePercentage.setText(Main.getBar().percentualGenero()[1] + "%");
-        femalePercentage.setText(Main.getBar().percentualGenero()[0] + "%");
+        malePercentage.setText(Main.getBar().percentualGenero().getMale()*100 + "%");
+        femalePercentage.setText(Main.getBar().percentualGenero().getFemale()*100 + "%");
     }
 
 
