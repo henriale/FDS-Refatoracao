@@ -6,6 +6,7 @@ Classe Main, responsavel por executar a primeira instancia da UI
 
 import business.Bar;
 import business.Client;
+import business.Gender;
 import business.Socio;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -53,7 +54,7 @@ public class Main extends Application {
         String nome = name.getText();
         String cpf = partnerCpf.getText();
         int idade = Integer.parseInt(age.getText());
-        Character sexo = rbClientFemale.isSelected() ? 'M' : 'H';
+        Gender sexo = rbClientFemale.isSelected() ? Gender.FEMALE : Gender.MALE;
         if(!Main.getBar().contemCpf(cpf)){
             Main.getBar().addCliente(new Client(nome, cpf, idade, sexo));
             partnerAdded.setVisible(true);
@@ -74,7 +75,7 @@ public class Main extends Application {
         String nome = name.getText();
         String cpf = partnerCpf.getText();
         int idade = Integer.parseInt(age.getText());
-        Character sexo = rbClientFemale.isSelected() ? 'M' : 'H';
+        Gender sexo = rbClientFemale.isSelected() ? Gender.FEMALE : Gender.MALE;
         String partnerId = partnerNumber.getText();
         if(!Main.getBar().contemCpf(cpf)){
             Main.getBar().addCliente(new Socio(nome, cpf, idade, sexo, partnerId));

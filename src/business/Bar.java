@@ -47,15 +47,15 @@ public class Bar {
         }
 
         for (Map.Entry<String, Client> cliente : clientes.entrySet()) {
-            if (cliente.getValue().getGenero() == 'M') {
+            if (cliente.getValue().getGenero() == Gender.MALE) {
                 m++;
-            } else {
+            } else if (cliente.getValue().getGenero() == Gender.FEMALE) {
                 f++;
             }
         }
 
-        retorno[0] = m/clientes.size()*100;
-        retorno[1] = f/clientes.size()*100;
+        retorno[0] = m/clientes.size();
+        retorno[1] = f/clientes.size();
 
         return retorno;
     }
@@ -73,8 +73,8 @@ public class Bar {
             }
         }
 
-        retorno[0] = socio/clientes.size()*100;
-        retorno[1] = naoSocio/clientes.size()*100;
+        retorno[0] = socio/clientes.size();
+        retorno[1] = naoSocio/clientes.size();
 
         return retorno;
     }

@@ -4,21 +4,17 @@ public class Client {
     private String nome;
     private String cpf;
     private int idade;
-    private Character genero;
+    private Gender genero;
 
-    public Client(String nome, String cpf, int idade, Character genero) {
+    public Client(String nome, String cpf, int idade, Gender genero) {
         this.nome = nome;
+        this.genero = genero;;
         setCpf(cpf);
-        setGenero(genero);
         setIdade(idade);
     }
 
     private void setIdade(int idade) {
         this.idade = idade >= 18 ? idade : 0;
-    }
-
-    private void setGenero(Character genero) {
-        this.genero = genero.equals('M') || genero.equals('H') ? genero : null;
     }
 
     public String getNome() {
@@ -37,7 +33,7 @@ public class Client {
         return idade;
     }
 
-    public Character getGenero() {
+    public Gender getGenero() {
         return genero;
     }
 
