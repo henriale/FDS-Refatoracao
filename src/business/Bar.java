@@ -12,53 +12,53 @@ import java.util.Date;
 
 public class Bar {
     private AccessRecordCollection accessRecords;
-    private CustomerCollection clientes;
+    private CustomerCollection customers;
 
 
     public Bar() {
-        this.clientes = new CustomerCollection();
+        this.customers = new CustomerCollection();
         this.accessRecords = new AccessRecordCollection();
     }
 
-    public Collection<Client> consultaClientes() {
-        return clientes.consultaClientes();
+    public Collection<Customer> queryCustomers() {
+        return customers.getAll();
     }
 
-    public Client consultaCliente(String cpf) {
-        return clientes.consultaCliente(cpf);
+    public Customer queryCustomer(String cpf) {
+        return customers.getByCPF(cpf);
     }
 
-    public int quantidadeClientes() {
-        return clientes.quantidadeClientes();
+    public int countCustomers() {
+        return customers.count();
     }
 
-    public GenderTuple percentualGenero() {
-        return clientes.percentualGenero();
+    public GenderTuple getGenderRate() {
+        return customers.genderRate();
     }
 
-    public MembershipTuple percentualSocios() {
-        return clientes.percentualSocios();
+    public MembershipTuple getMembershipRate() {
+        return customers.membershipRate();
     }
 
-    public void addCliente(Client client) {
-        clientes.addCliente(client);
+    public void addCustomer(Customer customer) {
+        customers.put(customer);
     }
 
-    public Client removeCliente(String cpf) {
-        Client cliente = clientes.removeCliente(cpf);
+    public Customer removeCustomer(String cpf) {
+        Customer customer = customers.remove(cpf);
 
-        accessRecords.put(new Date(), cliente);
+        accessRecords.put(new Date(), customer);
 
-        return cliente;
+        return customer;
     }
 
-    public boolean contemCpf(String cpf) {
-        return clientes.contemCpf(cpf);
+    public boolean customerExists(String cpf) {
+        return customers.hasCPF(cpf);
     }
 
-    public void fechar() throws Exception {
-        if (quantidadeClientes() > 0) {
-            throw new Exception("Não foi possível fechar o bar pois ainda há clientes dentro!");
+    public void close() throws Exception {
+        if (countCustomers() > 0) {
+            throw new Exception("Não foi possível fechar o bar pois ainda há customers dentro!");
         }
 
         Report report = new Report(new FileTitleFormatter(), new AccessRecordFormatter(), "records");

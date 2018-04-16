@@ -35,8 +35,8 @@ public class ClientExitController {
 
     public void clientExit() {
         String cpf = clientCpf.getText();
-        if (Main.getBar().contemCpf(cpf)) {
-            Main.getBar().removeCliente(cpf);
+        if (Main.getBar().customerExists(cpf)) {
+            Main.getBar().removeCustomer(cpf);
             goodbye.setVisible(true);
             Timeline timelineExitClient = new Timeline(new KeyFrame(
                     Duration.millis(2000),

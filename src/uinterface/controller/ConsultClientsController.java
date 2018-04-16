@@ -5,7 +5,7 @@ Classe Controller da Screen de consulta de clientes
 Implementa a classe Initializable para popular automaticamente a listview
  */
 
-import business.Client;
+import business.Customer;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -22,7 +22,7 @@ public class ConsultClientsController implements Initializable {
     private Button backBtn;
 
     @FXML
-    private ListView<Client> clients;
+    private ListView<Customer> clients;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -30,8 +30,8 @@ public class ConsultClientsController implements Initializable {
     }
 
     public void populateListView() {
-        for (Client client : Main.getBar().consultaClientes()) {
-            clients.getItems().add(client);
+        for (Customer customer : Main.getBar().queryCustomers()) {
+            clients.getItems().add(customer);
         }
     }
 

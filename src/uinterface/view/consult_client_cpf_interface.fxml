@@ -39,7 +39,7 @@
                 <Insets left="10.0"/>
             </GridPane.margin>
         </Label>
-        <Label fx:id="client" visible="false" GridPane.columnSpan="2147483647" GridPane.rowIndex="1">
+        <Label fx:id="customer" visible="false" GridPane.columnSpan="2147483647" GridPane.rowIndex="1">
             <GridPane.margin>
                 <Insets left="10.0" right="10.0"/>
             </GridPane.margin>

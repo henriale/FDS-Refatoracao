@@ -7,83 +7,82 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class CustomerCollection {
-    private Map<String, Client> clientes;
+    private Map<String, Customer> customers;
 
     public CustomerCollection() {
-        this.clientes = new HashMap<>(10);
+        this.customers = new HashMap<>(10);
     }
 
-    public Collection<Client> consultaClientes() {
-        return clientes.values();
+    public Collection<Customer> getAll() {
+        return customers.values();
     }
 
-    public Client consultaCliente(String cpf) {
-        if (clientes.containsKey(cpf)) {
-            return clientes.get(cpf);
+    public Customer getByCPF(String cpf) {
+        if (customers.containsKey(cpf)) {
+            return customers.get(cpf);
         }
 
         return null;
     }
 
-    public int quantidadeClientes() {
-        return clientes.size();
+    public int count() {
+        return customers.size();
     }
 
-    public GenderTuple percentualGenero() {
+    public GenderTuple genderRate() {
         double m = 0;
         double f = 0;
 
-        if (clientes.isEmpty()) {
+        if (customers.isEmpty()) {
             return new GenderTuple(0, 0);
         }
 
-        for (Map.Entry<String, Client> cliente : clientes.entrySet()) {
-            if (cliente.getValue().getGenero() == Gender.MALE) {
+        for (Map.Entry<String, Customer> customer : customers.entrySet()) {
+            if (customer.getValue().getGender() == Gender.MALE) {
                 m++;
-            } else if (cliente.getValue().getGenero() == Gender.FEMALE) {
+            } else if (customer.getValue().getGender() == Gender.FEMALE) {
                 f++;
             }
         }
-        return new GenderTuple(m / clientes.size(), f / clientes.size());
+        return new GenderTuple(m / customers.size(), f / customers.size());
     }
 
-    public MembershipTuple percentualSocios() {
-        double socio = 0;
-        double naoSocio = 0;
-        double[] retorno = new double[2];
+    public MembershipTuple membershipRate() {
+        double registered = 0;
+        double unregistered = 0;
 
-        if (clientes.isEmpty()) {
+        if (customers.isEmpty()) {
             return new MembershipTuple(0.0, 0.0);
         }
 
-        for (Map.Entry<String, Client> entry : clientes.entrySet()) {
-            if (entry.getValue() instanceof Socio) {
-                socio++;
+        for (Map.Entry<String, Customer> entry : customers.entrySet()) {
+            if (entry.getValue() instanceof Member) {
+                registered++;
             } else {
-                naoSocio++;
+                unregistered++;
             }
         }
 
-        return new MembershipTuple(socio / clientes.size(), naoSocio / clientes.size());
+        return new MembershipTuple(registered / customers.size(), unregistered / customers.size());
     }
 
-    public void addCliente(Client client) {
-        if (!clientes.containsKey(client.getCpf())) {
-            clientes.put(client.getCpf(), client);
+    public void put(Customer customer) {
+        if (!customers.containsKey(customer.getCpf())) {
+            customers.put(customer.getCpf(), customer);
         }
     }
 
-    public Client removeCliente(String cpf) {
-        if (!clientes.containsKey(cpf)) {
+    public Customer remove(String cpf) {
+        if (!customers.containsKey(cpf)) {
             return null;
         }
 
-        Client cliente = clientes.remove(cpf);
+        Customer customer = customers.remove(cpf);
 
-        return cliente;
+        return customer;
     }
 
-    public boolean contemCpf(String cpf) {
-        return clientes.containsKey(cpf);
+    public boolean hasCPF(String cpf) {
+        return customers.containsKey(cpf);
     }
 }

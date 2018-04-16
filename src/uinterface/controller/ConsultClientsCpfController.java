@@ -1,6 +1,6 @@
 package uinterface.controller;
 
-import business.Client;
+import business.Customer;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -31,9 +31,9 @@ public class ConsultClientsCpfController {
 
 
     public void searchClient() {
-        Client clientFromCpf = Main.getBar().consultaCliente(cpfField.getText());
-        if (clientFromCpf != null) {
-            client.setText(clientFromCpf.toString());
+        Customer customerFromCpf = Main.getBar().queryCustomer(cpfField.getText());
+        if (customerFromCpf != null) {
+            client.setText(customerFromCpf.toString());
             clientNotFound.setVisible(false);
             client.setVisible(true);
         } else {

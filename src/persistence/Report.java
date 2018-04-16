@@ -1,6 +1,6 @@
 package persistence;
 
-import business.Client;
+import business.Customer;
 import collection.AccessRecordCollection;
 import formatter.AccessRecordFormatter;
 import formatter.FileTitleFormatter;
@@ -35,13 +35,13 @@ public class Report {
     }
 
     public void write(AccessRecordCollection accessRecords) throws IOException {
-        for (Map.Entry<Date, Client> entry : accessRecords.getAll()) {
-            Client cliente = entry.getValue();
+        for (Map.Entry<Date, Customer> entry : accessRecords.getAll()) {
+            Customer customer = entry.getValue();
             fileWriter.write(String.format(
-                    "%s Client %s(%s) left the bar.\n",
+                    "%s Customer %s(%s) left the bar.\n",
                     accessRecordFormatter.format(entry.getKey()),
-                    cliente.getNome(),
-                    cliente.getCpf()
+                    customer.getName(),
+                    customer.getCpf()
             ));
         }
 

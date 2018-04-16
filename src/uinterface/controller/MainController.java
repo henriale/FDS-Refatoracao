@@ -90,7 +90,7 @@ public class MainController {
     }
 
     public void exit() throws Exception {
-        if (!Main.getBar().consultaClientes().isEmpty()) {
+        if (!Main.getBar().queryCustomers().isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Ops, ainda não...");
             alert.setHeaderText(null);
@@ -98,7 +98,7 @@ public class MainController {
 
             alert.showAndWait();
         } else {
-            Main.getBar().fechar();
+            Main.getBar().close();
         }
     }
 }
