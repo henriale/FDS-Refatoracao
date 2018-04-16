@@ -1,14 +1,13 @@
 package persistence;
 
 import business.Client;
+import collection.AccessRecordCollection;
 import formatter.AccessRecordFormatter;
 import formatter.FileTitleFormatter;
 
 import java.io.FileWriter;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.Map;
 
 public class Report {
@@ -35,8 +34,8 @@ public class Report {
         ));
     }
 
-    public void write(HashMap<Date, Client> accessRecords) throws IOException {
-        for (Map.Entry<Date, Client> entry : accessRecords.entrySet()) {
+    public void write(AccessRecordCollection accessRecords) throws IOException {
+        for (Map.Entry<Date, Client> entry : accessRecords.getAll()) {
             Client cliente = entry.getValue();
             fileWriter.write(String.format(
                     "%s Client %s(%s) left the bar.\n",

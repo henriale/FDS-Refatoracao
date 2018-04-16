@@ -1,5 +1,6 @@
 package business;
 
+import collection.AccessRecordCollection;
 import collection.CustomerCollection;
 import formatter.AccessRecordFormatter;
 import formatter.FileTitleFormatter;
@@ -10,13 +11,13 @@ import java.util.Date;
 import java.util.HashMap;
 
 public class Bar {
-    private HashMap<Date, Client> accessRecords;
+    private AccessRecordCollection accessRecords;
     private CustomerCollection clientes;
 
 
     public Bar() {
         this.clientes = new CustomerCollection();
-        this.accessRecords = new HashMap<>(10);
+        this.accessRecords = new AccessRecordCollection();
     }
 
     public Collection<Client> consultaClientes(){
