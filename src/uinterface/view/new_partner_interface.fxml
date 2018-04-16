@@ -1,60 +1,67 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="240.0" prefWidth="320.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uinterface.controller.NewPartnerController">
-  <columnConstraints>
-    <ColumnConstraints hgrow="SOMETIMES" maxWidth="89.0" minWidth="10.0" prefWidth="65.0" />
-    <ColumnConstraints hgrow="SOMETIMES" maxWidth="131.0" minWidth="10.0" prefWidth="75.0" />
-      <ColumnConstraints hgrow="SOMETIMES" maxWidth="131.0" minWidth="10.0" prefWidth="75.0" />
-      <ColumnConstraints hgrow="SOMETIMES" maxWidth="200.0" minWidth="10.0" prefWidth="88.0" />
-  </columnConstraints>
-  <rowConstraints>
-    <RowConstraints maxHeight="40.0" minHeight="23.0" prefHeight="40.0" vgrow="SOMETIMES" />
-    <RowConstraints maxHeight="40.0" minHeight="30.0" prefHeight="40.0" vgrow="SOMETIMES" />
-    <RowConstraints maxHeight="40.0" minHeight="30.0" prefHeight="40.0" vgrow="SOMETIMES" />
-      <RowConstraints maxHeight="40.0" minHeight="30.0" prefHeight="40.0" vgrow="SOMETIMES" />
-      <RowConstraints maxHeight="40.0" minHeight="28.0" prefHeight="40.0" vgrow="SOMETIMES" />
-      <RowConstraints maxHeight="40.0" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
-  </rowConstraints>
-   <children>
-      <Label text="Nome:" GridPane.halignment="LEFT" GridPane.valignment="CENTER" />
-      <Label text="Idade:" GridPane.rowIndex="1" />
-      <Label text="CPF:" GridPane.rowIndex="2" />
-      <Label text="Sexo:" GridPane.rowIndex="4" />
-      <TextField fx:id="partnerName" GridPane.columnIndex="1" GridPane.columnSpan="2147483647">
-         <GridPane.margin>
-            <Insets />
-         </GridPane.margin>
-      </TextField>
-      <TextField fx:id="partnerAge" GridPane.columnIndex="1" GridPane.columnSpan="2147483647" GridPane.rowIndex="1">
-         <GridPane.margin>
-            <Insets />
-         </GridPane.margin>
-      </TextField>
-      <TextField fx:id="partnerCpf" GridPane.columnIndex="1" GridPane.columnSpan="2147483647" GridPane.rowIndex="2" />
-      <Button fx:id="cancelNewPartnerButton" alignment="CENTER_RIGHT" cancelButton="true" mnemonicParsing="false" onAction="#moveMain" text="Voltar" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="5" GridPane.valignment="CENTER">
-         <GridPane.margin>
-            <Insets right="10.0" />
-         </GridPane.margin></Button>
-      <Button fx:id="addNewPartnerButton" defaultButton="true" mnemonicParsing="false" onAction="#newClient" text="Adicionar" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="5" />
-      <RadioButton fx:id="rbClientMale" mnemonicParsing="false" text="Masc." GridPane.columnIndex="1" GridPane.rowIndex="4">
-         <toggleGroup>
-            <ToggleGroup fx:id="group" />
-         </toggleGroup>
-      </RadioButton>
-      <RadioButton fx:id="rbClientFemale" mnemonicParsing="false" text="Fem." toggleGroup="$group" GridPane.columnIndex="2" GridPane.rowIndex="4" />
-      <Label fx:id="partnerAdded" text="Concluído" visible="false" GridPane.columnSpan="2147483647" GridPane.rowIndex="5" />
-      <Label fx:id="cpfAlreadyExists" layoutX="20.0" layoutY="172.0" text="CPF já existe" visible="false" GridPane.columnSpan="2147483647" GridPane.rowIndex="5" />
-      <Label fx:id="partnerNumberLabel" text="Nº sócio:" GridPane.rowIndex="3" />
-      <TextField fx:id="partnerNumber" GridPane.columnIndex="1" GridPane.columnSpan="2147483647" GridPane.rowIndex="3" />
-   </children>
-   <padding>
-      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-   </padding>
+<GridPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+          prefHeight="240.0" prefWidth="320.0" xmlns="http://javafx.com/javafx/8"
+          fx:controller="uinterface.controller.NewPartnerController">
+    <columnConstraints>
+        <ColumnConstraints hgrow="SOMETIMES" maxWidth="89.0" minWidth="10.0" prefWidth="65.0"/>
+        <ColumnConstraints hgrow="SOMETIMES" maxWidth="131.0" minWidth="10.0" prefWidth="75.0"/>
+        <ColumnConstraints hgrow="SOMETIMES" maxWidth="131.0" minWidth="10.0" prefWidth="75.0"/>
+        <ColumnConstraints hgrow="SOMETIMES" maxWidth="200.0" minWidth="10.0" prefWidth="88.0"/>
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints maxHeight="40.0" minHeight="23.0" prefHeight="40.0" vgrow="SOMETIMES"/>
+        <RowConstraints maxHeight="40.0" minHeight="30.0" prefHeight="40.0" vgrow="SOMETIMES"/>
+        <RowConstraints maxHeight="40.0" minHeight="30.0" prefHeight="40.0" vgrow="SOMETIMES"/>
+        <RowConstraints maxHeight="40.0" minHeight="30.0" prefHeight="40.0" vgrow="SOMETIMES"/>
+        <RowConstraints maxHeight="40.0" minHeight="28.0" prefHeight="40.0" vgrow="SOMETIMES"/>
+        <RowConstraints maxHeight="40.0" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES"/>
+    </rowConstraints>
+    <children>
+        <Label text="Nome:" GridPane.halignment="LEFT" GridPane.valignment="CENTER"/>
+        <Label text="Idade:" GridPane.rowIndex="1"/>
+        <Label text="CPF:" GridPane.rowIndex="2"/>
+        <Label text="Sexo:" GridPane.rowIndex="4"/>
+        <TextField fx:id="partnerName" GridPane.columnIndex="1" GridPane.columnSpan="2147483647">
+            <GridPane.margin>
+                <Insets/>
+            </GridPane.margin>
+        </TextField>
+        <TextField fx:id="partnerAge" GridPane.columnIndex="1" GridPane.columnSpan="2147483647" GridPane.rowIndex="1">
+            <GridPane.margin>
+                <Insets/>
+            </GridPane.margin>
+        </TextField>
+        <TextField fx:id="partnerCpf" GridPane.columnIndex="1" GridPane.columnSpan="2147483647" GridPane.rowIndex="2"/>
+        <Button fx:id="cancelNewPartnerButton" alignment="CENTER_RIGHT" cancelButton="true" mnemonicParsing="false"
+                onAction="#moveMain" text="Voltar" GridPane.columnIndex="2" GridPane.halignment="RIGHT"
+                GridPane.rowIndex="5" GridPane.valignment="CENTER">
+            <GridPane.margin>
+                <Insets right="10.0"/>
+            </GridPane.margin>
+        </Button>
+        <Button fx:id="addNewPartnerButton" defaultButton="true" mnemonicParsing="false" onAction="#newClient"
+                text="Adicionar" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="5"/>
+        <RadioButton fx:id="rbClientMale" mnemonicParsing="false" text="Masc." GridPane.columnIndex="1"
+                     GridPane.rowIndex="4">
+            <toggleGroup>
+                <ToggleGroup fx:id="group"/>
+            </toggleGroup>
+        </RadioButton>
+        <RadioButton fx:id="rbClientFemale" mnemonicParsing="false" text="Fem." toggleGroup="$group"
+                     GridPane.columnIndex="2" GridPane.rowIndex="4"/>
+        <Label fx:id="partnerAdded" text="Concluído" visible="false" GridPane.columnSpan="2147483647"
+               GridPane.rowIndex="5"/>
+        <Label fx:id="cpfAlreadyExists" layoutX="20.0" layoutY="172.0" text="CPF já existe" visible="false"
+               GridPane.columnSpan="2147483647" GridPane.rowIndex="5"/>
+        <Label fx:id="partnerNumberLabel" text="Nº sócio:" GridPane.rowIndex="3"/>
+        <TextField fx:id="partnerNumber" GridPane.columnIndex="1" GridPane.columnSpan="2147483647"
+                   GridPane.rowIndex="3"/>
+    </children>
+    <padding>
+        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+    </padding>
 </GridPane>

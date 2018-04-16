@@ -63,13 +63,13 @@ public class MainController {
 
     public void consultClient(ActionEvent actionEvent) throws IOException {
         Parent root;
-        if (actionEvent.getSource() == consultClients){
+        if (actionEvent.getSource() == consultClients) {
             root = FXMLLoader.load(getClass().getResource("../view/consult_clients_interface.fxml"));
-        } else if (actionEvent.getSource() == consultPerCpf){
+        } else if (actionEvent.getSource() == consultPerCpf) {
             root = FXMLLoader.load(getClass().getResource("../view/consult_client_cpf_interface.fxml"));
-        } else if (actionEvent.getSource() == consultPerGender){
+        } else if (actionEvent.getSource() == consultPerGender) {
             root = FXMLLoader.load(getClass().getResource("../view/consult_client_gender_interface.fxml"));
-        } else if (actionEvent.getSource() == consultPerPartner){
+        } else if (actionEvent.getSource() == consultPerPartner) {
             root = FXMLLoader.load(getClass().getResource("../view/consult_client_partners_interface.fxml"));
         } else {
             root = FXMLLoader.load(getClass().getResource("../view/main_interface.fxml"));
@@ -81,7 +81,7 @@ public class MainController {
         stage.show();
     }
 
-    public void clientExit() throws IOException{
+    public void clientExit() throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("../view/client_exit_interface.fxml"));
         Stage stage = (Stage) clientExit.getScene().getWindow();
         stage.setTitle("Cliente saindo :(");
@@ -90,7 +90,7 @@ public class MainController {
     }
 
     public void exit() throws Exception {
-        if(!Main.getBar().consultaClientes().isEmpty()){
+        if (!Main.getBar().consultaClientes().isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Ops, ainda não...");
             alert.setHeaderText(null);

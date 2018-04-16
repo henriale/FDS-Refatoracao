@@ -6,9 +6,9 @@ import formatter.AccessRecordFormatter;
 import formatter.FileTitleFormatter;
 import javafx.application.Platform;
 import persistence.Report;
+
 import java.util.Collection;
 import java.util.Date;
-import java.util.HashMap;
 
 public class Bar {
     private AccessRecordCollection accessRecords;
@@ -20,7 +20,7 @@ public class Bar {
         this.accessRecords = new AccessRecordCollection();
     }
 
-    public Collection<Client> consultaClientes(){
+    public Collection<Client> consultaClientes() {
         return clientes.consultaClientes();
     }
 
@@ -44,7 +44,7 @@ public class Bar {
         clientes.addCliente(client);
     }
 
-    public Client removeCliente(String cpf){
+    public Client removeCliente(String cpf) {
         Client cliente = clientes.removeCliente(cpf);
 
         accessRecords.put(new Date(), cliente);

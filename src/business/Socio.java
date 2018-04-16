@@ -14,7 +14,7 @@ public class Socio extends Client {
 
     @Override
     public String toString() {
-        return  "Nome: '" + getNome() + '\'' +
+        return "Nome: '" + getNome() + '\'' +
                 ", CPF: '" + getCpf() + '\'' +
                 ", Idade: " + getIdade() +
                 ", Gênero: " + getGenero() +

@@ -29,9 +29,8 @@ public class ConsultClientsController implements Initializable {
         populateListView();
     }
 
-    public void populateListView(){
-        for (Client client: Main.getBar().consultaClientes())
-        {
+    public void populateListView() {
+        for (Client client : Main.getBar().consultaClientes()) {
             clients.getItems().add(client);
         }
     }

@@ -32,7 +32,7 @@ public class ConsultClientsCpfController {
 
     public void searchClient() {
         Client clientFromCpf = Main.getBar().consultaCliente(cpfField.getText());
-        if (clientFromCpf != null){
+        if (clientFromCpf != null) {
             client.setText(clientFromCpf.toString());
             clientNotFound.setVisible(false);
             client.setVisible(true);

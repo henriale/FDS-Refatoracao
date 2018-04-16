@@ -25,14 +25,6 @@ import java.io.IOException;
 public class Main extends Application {
     private static Bar bar = new Bar();
 
-    @Override
-    public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("../view/main_interface.fxml"));
-        primaryStage.setTitle("Bora beber!!!");
-        primaryStage.setScene(new Scene(root, 300, 200));
-        primaryStage.show();
-    }
-
     /*
     Nao sei se eh a melhor maneira para retirar os codigos duplicados
     Ate pq ta exatamente o metodo start ali de cima
@@ -55,7 +47,7 @@ public class Main extends Application {
         String cpf = partnerCpf.getText();
         int idade = Integer.parseInt(age.getText());
         Gender sexo = rbClientFemale.isSelected() ? Gender.FEMALE : Gender.MALE;
-        if(!Main.getBar().contemCpf(cpf)){
+        if (!Main.getBar().contemCpf(cpf)) {
             Main.getBar().addCliente(new Client(nome, cpf, idade, sexo));
             partnerAdded.setVisible(true);
             Timeline timeline = new Timeline(new KeyFrame(
@@ -77,7 +69,7 @@ public class Main extends Application {
         int idade = Integer.parseInt(age.getText());
         Gender sexo = rbClientFemale.isSelected() ? Gender.FEMALE : Gender.MALE;
         String partnerId = partnerNumber.getText();
-        if(!Main.getBar().contemCpf(cpf)){
+        if (!Main.getBar().contemCpf(cpf)) {
             Main.getBar().addCliente(new Socio(nome, cpf, idade, sexo, partnerId));
             partnerAdded.setVisible(true);
             Timeline timeline = new Timeline(new KeyFrame(
@@ -93,12 +85,19 @@ public class Main extends Application {
         }
     }
 
-
     public static Bar getBar() {
         return bar;
     }
 
     public static void main(String[] args) {
         launch(args);
+    }
+
+    @Override
+    public void start(Stage primaryStage) throws Exception {
+        Parent root = FXMLLoader.load(getClass().getResource("../view/main_interface.fxml"));
+        primaryStage.setTitle("Bora beber!!!");
+        primaryStage.setScene(new Scene(root, 300, 200));
+        primaryStage.show();
     }
 }

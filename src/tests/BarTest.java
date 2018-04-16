@@ -4,7 +4,8 @@ import business.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class BarTest {
     private static Bar bar;
@@ -27,7 +28,7 @@ public class BarTest {
     }
 
     @Test
-    public void testeClientesCpfExistente(){
+    public void testeClientesCpfExistente() {
         String cpf = "12345678901";
         bar.addCliente(new Client("Celso", cpf, 63, Gender.MALE));
 
@@ -36,7 +37,7 @@ public class BarTest {
     }
 
     @Test
-    public void testeClientesCpfInexistente(){
+    public void testeClientesCpfInexistente() {
         String cpf = "12345678901";
         bar.addCliente(new Client("Celso", cpf, 63, Gender.MALE));
 
@@ -78,7 +79,7 @@ public class BarTest {
     }
 
     @Test
-    public void testePercentualSocio(){
+    public void testePercentualSocio() {
         bar.addCliente(new Client("Jorge", "12345678901", 63, Gender.MALE));
         bar.addCliente(new Socio("Carla", "22345678902", 63, Gender.FEMALE, "12312311"));
 
@@ -88,7 +89,7 @@ public class BarTest {
     }
 
     @Test
-    public void testeRemoveCliente(){
+    public void testeRemoveCliente() {
         String cpf = "12345678901";
         bar.addCliente(new Socio("Carla", cpf, 63, Gender.FEMALE, "12312311"));
 
@@ -99,7 +100,7 @@ public class BarTest {
     }
 
     @Test
-    public void testeContemCpf(){
+    public void testeContemCpf() {
         String cpf = "12345678901";
         bar.addCliente(new Socio("Carla", cpf, 63, Gender.FEMALE, "12312311"));
 
@@ -107,7 +108,7 @@ public class BarTest {
     }
 
     @Test
-    public void testeFecharBar(){
+    public void testeFecharBar() {
         bar.addCliente(new Socio("Carla", "12345678901", 63, Gender.FEMALE, "12312311"));
         bar.removeCliente("12345678901");
 

@@ -13,12 +13,12 @@ public class CustomerCollection {
         this.clientes = new HashMap<>(10);
     }
 
-    public Collection<Client> consultaClientes(){
+    public Collection<Client> consultaClientes() {
         return clientes.values();
     }
 
     public Client consultaCliente(String cpf) {
-        if (clientes.containsKey(cpf)){
+        if (clientes.containsKey(cpf)) {
             return clientes.get(cpf);
         }
 
@@ -44,7 +44,7 @@ public class CustomerCollection {
                 f++;
             }
         }
-        return new GenderTuple(m/clientes.size(), f/clientes.size());
+        return new GenderTuple(m / clientes.size(), f / clientes.size());
     }
 
     public MembershipTuple percentualSocios() {
@@ -64,7 +64,7 @@ public class CustomerCollection {
             }
         }
 
-        return new MembershipTuple(socio/clientes.size(), naoSocio/clientes.size());
+        return new MembershipTuple(socio / clientes.size(), naoSocio / clientes.size());
     }
 
     public void addCliente(Client client) {
@@ -73,8 +73,8 @@ public class CustomerCollection {
         }
     }
 
-    public Client removeCliente(String cpf){
-        if (! clientes.containsKey(cpf)) {
+    public Client removeCliente(String cpf) {
+        if (!clientes.containsKey(cpf)) {
             return null;
         }
 
