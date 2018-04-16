@@ -1,17 +1,18 @@
 package business;
 
+import formatter.AccessRecordFormatter;
+import formatter.FileTitleFormatter;
 import javafx.application.Platform;
+import persistence.Report;
 
-import java.io.FileWriter;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
 import java.util.Collection;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
 public class Bar {
-    private final HashMap<Date, Client> accessRecords;
+    private HashMap<Date, Client> accessRecords;
     private Map<String, Client> clientes;
 
 
@@ -100,32 +101,8 @@ public class Bar {
             throw new Exception("Não foi possível fechar o bar pois ainda há clientes dentro!");
         }
 
-        try {
-            // create formatters and file writer. constructor(FileTitleFormatter, AccessRecordFormatter, AccessRecordsCollection, path)
-            SimpleDateFormat fileDateFormatter = new SimpleDateFormat("yyyy-MM-dd-hhmm");
-            SimpleDateFormat recordDateFormatter = new SimpleDateFormat("dd/MM/yyyy hh:mm");
-            FileWriter fw = new FileWriter(String.format("records/%s.txt", fileDateFormatter.format(new Date())));
-
-            // check if file already exists
-            if (true) {
-                // TODO
-            }
-
-            // write in file
-            for (Map.Entry<Date, Client> entry : accessRecords.entrySet()) {
-                Client cliente = entry.getValue();
-                fw.write(String.format(
-                        "%s Client %s(%s) left the bar.\n",
-                        recordDateFormatter.format(entry.getKey()),
-                        cliente.getNome(),
-                        cliente.getCpf()
-                ));
-            }
-
-            fw.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        Report report = new Report(new FileTitleFormatter(), new AccessRecordFormatter(), "records");
+        report.write(accessRecords);
 
         Platform.exit();
     }
