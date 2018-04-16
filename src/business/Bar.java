@@ -1,99 +1,58 @@
 package business;
 
+import collection.CustomerCollection;
 import formatter.AccessRecordFormatter;
 import formatter.FileTitleFormatter;
 import javafx.application.Platform;
 import persistence.Report;
-
-import java.io.IOException;
 import java.util.Collection;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.Map;
 
 public class Bar {
     private HashMap<Date, Client> accessRecords;
-    private Map<String, Client> clientes;
+    private CustomerCollection clientes;
 
 
     public Bar() {
-        this.clientes = new HashMap<>(10);
+        this.clientes = new CustomerCollection();
         this.accessRecords = new HashMap<>(10);
     }
 
     public Collection<Client> consultaClientes(){
-        return clientes.values();
+        return clientes.consultaClientes();
     }
 
     public Client consultaCliente(String cpf) {
-        if (clientes.containsKey(cpf)){
-            return clientes.get(cpf);
-        }
-
-        return null;
+        return clientes.consultaCliente(cpf);
     }
 
     public int quantidadeClientes() {
-        return clientes.size();
+        return clientes.quantidadeClientes();
     }
 
     public GenderTuple percentualGenero() {
-        double m = 0;
-        double f = 0;
-
-        if (clientes.isEmpty()) {
-            return new GenderTuple(0, 0);
-        }
-
-        for (Map.Entry<String, Client> cliente : clientes.entrySet()) {
-            if (cliente.getValue().getGenero() == Gender.MALE) {
-                m++;
-            } else if (cliente.getValue().getGenero() == Gender.FEMALE) {
-                f++;
-            }
-        }
-        return new GenderTuple(m/clientes.size(), f/clientes.size());
+        return clientes.percentualGenero();
     }
 
     public MembershipTuple percentualSocios() {
-        double socio = 0;
-        double naoSocio = 0;
-        double[] retorno = new double[2];
-
-        if (clientes.isEmpty()) {
-            return new MembershipTuple(0.0, 0.0);
-        }
-
-        for (Map.Entry<String, Client> entry : clientes.entrySet()) {
-            if (entry.getValue() instanceof Socio) {
-                socio++;
-            } else {
-                naoSocio++;
-            }
-        }
-
-        return new MembershipTuple(socio/clientes.size(), naoSocio/clientes.size());
+        return clientes.percentualSocios();
     }
 
     public void addCliente(Client client) {
-        if (!clientes.containsKey(client.getCpf())) {
-            clientes.put(client.getCpf(), client);
-        }
+        clientes.addCliente(client);
     }
 
     public Client removeCliente(String cpf){
-        if (! clientes.containsKey(cpf)) {
-            return null;
-        }
+        Client cliente = clientes.removeCliente(cpf);
 
-        Client cliente = clientes.remove(cpf);
         accessRecords.put(new Date(), cliente);
 
         return cliente;
     }
 
     public boolean contemCpf(String cpf) {
-        return clientes.containsKey(cpf);
+        return clientes.contemCpf(cpf);
     }
 
     public void fechar() throws Exception {
